@@ -1,25 +1,23 @@
 :root {
-	--dark: #374151;
-	--darker: #1F2937;
-	--darkest: #111827;
-	--grey: #6B7280;
-	--pink: #EC4899;
-	--purple: #8B5CF6;
-	--light: #EEE;
+	--primary: #3498db; /* Blue */
+	--secondary: #2ecc71; /* Green */
+	--accent: #f39c12; /* Orange */
+	--dark: #2c3e50; /* Dark Blue */
+	--light: #ecf0f1; /* Light Gray */
 }
 
 * {
 	margin: 0;
 	box-sizing: border-box;
-	font-family: "Fira sans", sans-serif;
+	font-family: "Fira Sans", sans-serif;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	color: #FFF;
-	background-color: var(--dark);
+	color: var(--dark);
+	background-color: var(--light);
 }
 
 header {
@@ -29,18 +27,18 @@ header {
 	margin: 0 auto;
 }
 
-header h1{ 
+header h1 {
 	font-size: 2.5rem;
 	font-weight: 300;
-	color: var(--grey);
+	color: var(--primary);
 	margin-bottom: 1rem;
 }
 
 #new-task-form {
-	display: flex;;
+	display: flex;
 }
 
-input, button {
+input[type="text"], button {
 	appearance: none;
 	border: none;
 	outline: none;
@@ -48,8 +46,8 @@ input, button {
 }
 
 #new-task-input {
-	flex: 1 1 0%;
-	background-color: var(--darker);
+	flex: 1;
+	background-color: var(--dark);
 	padding: 1rem;
 	border-radius: 1rem;
 	margin-right: 1rem;
@@ -58,18 +56,19 @@ input, button {
 }
 
 #new-task-input::placeholder {
-	color: var(--grey);
+	color: var(--light);
 }
 
 #new-task-submit {
-	color: var(--pink);
+	color: var(--light);
 	font-size: 1.25rem;
 	font-weight: 700;
-	background-image: linear-gradient(to right, var(--pink), var(--purple));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	background-color: var(--accent);
 	cursor: pointer;
-	transition: 0.4s;
+	transition: opacity 0.4s;
+	padding: 0.5rem 1rem;
+	border-radius: 1rem;
+	border: none;
 }
 
 #new-task-submit:hover {
@@ -81,7 +80,7 @@ input, button {
 }
 
 main {
-	flex: 1 1 0%;
+	flex: 1;
 	max-width: 800px;
 	width: 100%;
 	margin: 0 auto;
@@ -94,33 +93,33 @@ main {
 .task-list h2 {
 	font-size: 1.5rem;
 	font-weight: 300;
-	color: var(--grey);
+	color: var(--primary);
 	margin-bottom: 1rem;
 }
 
 #tasks .task {
 	display: flex;
 	justify-content: space-between;
-	background-color: var(--darkest);
+	background-color: var(--primary);
 	padding: 1rem;
 	border-radius: 1rem;
 	margin-bottom: 1rem;
+	color: var(--light);
 }
 
 .task .content {
-	flex: 1 1 0%;
+	flex: 1;
 }
 
 .task .content .text {
-	color: var(--light);
 	font-size: 1.125rem;
 	width: 100%;
 	display: block;
-	transition: 0.4s;
+	transition: color 0.4s;
 }
 
 .task .content .text:not(:read-only) {
-	color: var(--pink);
+	color: var(--accent);
 }
 
 .task .actions {
@@ -134,7 +133,10 @@ main {
 	font-size: 1.125rem;
 	font-weight: 700;
 	text-transform: uppercase;
-	transition: 0.4s;
+	transition: opacity 0.4s;
+	padding: 0.5rem 1rem;
+	border-radius: 1rem;
+	border: none;
 }
 
 .task .actions button:hover {
@@ -146,11 +148,10 @@ main {
 }
 
 .task .actions .edit {
-	background-image: linear-gradient(to right, var(--pink), var(--purple));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	background-color: var(--secondary);
 }
 
 .task .actions .delete {
-	color: crimson;
+	background-color: var(--accent);
+	color: var(--light);
 }
